@@ -41,7 +41,9 @@ class Clock(tk.Frame):
         self.after(1000, self.update_time)
 
 
-if __name__ == "__main__":
+def main():
     root = tk.Tk()
     app = Clock(master=root)
     app.mainloop()
+
+main()
