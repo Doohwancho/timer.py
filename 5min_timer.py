@@ -4,6 +4,8 @@ import tkinter as tk
 import subprocess
 from threading import *
 import time 
+import os.path 
+
 
 class Clock(tk.Frame):
 
@@ -22,7 +24,7 @@ class Clock(tk.Frame):
         self.master.eval('tk::PlaceWindow . center')
         self.master.title("Digital Clock")
         self.start_time = datetime.now()
-        self.audio_file = "./rooster_crying.wav"
+        self.audio_file = os.path.join(os.path.abspath(os.path.dirname(__file__)), "rooster_crying.wav")
 
     def create_label(self):
         font_style = tkFont.Font(family="Consolas", size=60)
