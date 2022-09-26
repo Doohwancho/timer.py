@@ -2,7 +2,8 @@ from datetime import datetime, timedelta
 import tkinter.font as tkFont
 import tkinter as tk
 import subprocess
-
+from threading import *
+import time 
 
 class Clock(tk.Frame):
 
@@ -21,7 +22,6 @@ class Clock(tk.Frame):
         self.master.eval('tk::PlaceWindow . center')
         self.master.title("Digital Clock")
         self.start_time = datetime.now()
-
         self.audio_file = "./rooster_crying.wav"
 
     def create_label(self):
@@ -45,8 +45,26 @@ class Clock(tk.Frame):
             self.datetime_text.set(f"{str_time_diff}")
             self.after(1000, self.update_time)
         else:
-            subprocess.call(["afplay", self.audio_file])
-                
+            event = Event()
+            t1 = Thread(target=sleep_handler, args= [event], daemon=True)
+            t2 = Thread(target=alarm_handler, args= [self, event], daemon=True)
+            
+            t1.start()
+            t2.start()
+
+def sleep_handler(event):
+    while(True):
+        time.sleep(1)
+        event.set()
+
+def alarm_handler(self, event):
+    while(True):
+        event.wait()
+        subprocess.call(["afplay", self.audio_file])
+
+
+
+
 if __name__ == "__main__":
     root = tk.Tk()
     app = Clock(master=root)
