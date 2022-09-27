@@ -12,7 +12,7 @@ class Clock(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master
-        self.config_setting();
+        self.config_setting()
         self.create_label()
         self.update_time()
         self.pack()

@@ -23,3 +23,17 @@
 
 그리고 놀 때도, 알람이 없으면 한도끝도없이 놀게 되니까,
 5분 타이머를 쓰면 유용할지 싶다.   
+
+
+# concepts
+
+1. 파이썬 virtual env
+2. time 연산 in javascript 
+3. multi-thread 환경에서 n개의 쓰레드가 절차적 실행 
+4. daemon-thread
+5. 배치 파일로 프로그램 실행
+
+
+# library
+1. tkinter - python gui
+2. subprocess - load .wav file
