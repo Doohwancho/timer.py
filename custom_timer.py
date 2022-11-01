@@ -5,6 +5,7 @@ import subprocess
 from threading import *
 import time 
 import os.path 
+import sys
 
 
 class Clock(tk.Frame):
@@ -27,6 +28,9 @@ class Clock(tk.Frame):
         self.audio_file = os.path.join(os.path.abspath(os.path.dirname(__file__)), "rooster_crying.wav")
 
     def create_label(self):
+        l = tk.Label(root, text = sys.argv[1])
+        l.config(font =("Courier", 14))
+        l.pack()
         font_style = tkFont.Font(family="Consolas", size=60)
         self.datetime_text = tk.StringVar()
         datetime_label = tk.Label(
@@ -42,7 +46,9 @@ class Clock(tk.Frame):
         now = datetime.now()
         time_diff = now - self.start_time
 
-        if(time_diff <= timedelta(seconds=301)):
+        time_argv = 601 if len(sys.argv) < 3  else  int(sys.argv[2])*60+1
+
+        if(time_diff <= timedelta(seconds= time_argv)): 
             str_time_diff = str(time_diff).split(".")[0][2:]
             self.datetime_text.set(f"{str_time_diff}")
             self.after(1000, self.update_time)
