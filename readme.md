@@ -25,6 +25,12 @@
 5분 타이머를 쓰면 유용할지 싶다.   
 
 
+# How to use?
+
+python custom-timer.py ${목표} ${제한 시간}
+
+
+
 # concepts
 
 1. 파이썬 virtual env
