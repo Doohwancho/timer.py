@@ -27,7 +27,7 @@
 
 # How to use?
 
-python custom-timer.py ${목표} ${제한 시간}
+python custom-timer.py `${목표}` `${제한 시간}`
 
 
 
